@@ -271,72 +271,74 @@
 
       /* Mobile View */
       @media only screen and (max-width: 768px) {
-        .s-container,
-        header nav {
-          width: 80%;
-        }
-
-        .content {
+        .s-container {
           width: 90%;
-          text-align: center;
+          flex-direction: column; /* Stack content vertically */
+          text-align: center; /* Center-align text */
         }
 
-        .title {
-          font-size: 3rem;
-        }
-
-        .description {
-          width: 100%;
+        header nav {
+          width: 90%; /* Increase width to fit the screen better on mobile */
         }
 
         .image {
           width: 250px;
           height: 250px;
+          margin: auto; /* Center image */
         }
 
-        .image img {
-          height: 250px;
+        .content {
+          width: 100%; /* Ensure full width for the content */
+          text-align: center;
+        }
+
+        header ul {
+          flex-direction: column; /* Stack navigation items vertically */
+          gap: 1rem; /* Reduce gap between navigation items */
         }
 
         .skills .wrapper div {
-          width: calc(50% - 20px);
+          width: calc(50% - 20px); /* Adjust skill icons to fit 2 per row */
         }
 
         .projects-section .wrapper {
-          grid-template-columns: 1fr;
+          grid-template-columns: 1fr; /* Make projects display in one column */
+        }
+
+        .buttons {
+          justify-content: center; /* Center the buttons */
         }
       }
 
       @media only screen and (max-width: 550px) {
         header ul {
-          position: absolute;
-          right: 5vh;
-          top: 15vh;
-          width: 300px;
           display: none;
+          position: absolute;
+          right: 0;
+          top: 15vh;
+          width: 100%;
+          background-color: rgba(0, 0, 0, 0.8); /* Add background color for better visibility */
+          flex-direction: column;
+          align-items: center;
+        }
+
+        #btn {
+          display: block;
         }
 
         header #btn {
-          display: block;
           font-size: 30px;
+          color: white;
         }
 
-        .s-container {
-          flex-direction: column;
-        }
-
-        .skills .wrapper div {
-          width: 100%;
-        }
-
-        .contact .wrapper .grp {
-          font-size: 25px;
+        header ul.show {
+          display: flex; /* Show the menu when toggled */
         }
       }
     </style>
   </head>
   <body>
-<header>
+    <header>
       <nav>
         <h1></h1>
         <ul>
@@ -454,14 +456,10 @@
       </div>
     </div>
 
-
-
     <!-- back top button  -->
     <a href="#" class="back-top">
       <i class="fa-solid fa-arrow-up"></i>
     </a>
-
-    <script src="script.js"></script>
 
     <script>
       function downloadResume() {
@@ -473,6 +471,15 @@
         link.click();
         document.body.removeChild(link);
       }
+    </script>
+
+    <script>
+      const menuButton = document.getElementById('btn');
+      const menu = document.querySelector('header ul');
+
+      menuButton.addEventListener('click', () => {
+        menu.classList.toggle('show');
+      });
     </script>
 
   </body>
