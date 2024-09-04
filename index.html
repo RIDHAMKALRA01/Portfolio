@@ -29,23 +29,26 @@
       }
 
       header nav {
-        position: absolute; /* Makes the navigation bar absolute */
-        top: 0;
-        left: 0;
-        width: 100%; /* Ensure it spans the full width */
-        padding: 20px 0; /* Padding for breathing room */
+        height: 15vh;
+        width: 70%;
+        margin: 0 auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        z-index: 999; /* Ensures the navigation stays above other content */
-        background: rgba(0, 0, 0, 0.7); /* Slight transparent background for readability */
+      }
+
+      header h1 {
+        font-size: 45px;
+        color: crimson;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 5px;
       }
 
       header ul {
         display: flex;
         gap: 5rem;
         list-style: none;
-        transition: all 0.3s ease-in-out;
       }
 
       header a {
@@ -74,20 +77,7 @@
       }
 
       #btn {
-        display: none; /* Hide by default */
-      }
-
-      /* Mobile menu toggle */
-      header ul.show {
-        display: block;
-        flex-direction: column;
-        align-items: center;
-        background-color: rgba(0, 0, 0, 0.9);
-        position: absolute;
-        top: 15vh; /* Below the navigation bar */
-        right: 0;
-        width: 100%;
-        padding: 20px 0;
+        display: none;
       }
 
       /* Section Container */
@@ -281,25 +271,6 @@
 
       /* Mobile View */
       @media only screen and (max-width: 768px) {
-        header #btn {
-          display: block; /* Show the hamburger menu on mobile */
-          font-size: 30px;
-          color: white;
-        }
-
-        header ul {
-          display: none; /* Hide the menu initially on mobile */
-          flex-direction: column;
-          position: absolute;
-          top: 15vh; /* Same height as the header */
-          width: 100%;
-          background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        header ul.show {
-          display: flex; /* Show the menu when toggled */
-        }
-
         .s-container,
         header nav {
           width: 80%;
@@ -365,9 +336,9 @@
     </style>
   </head>
   <body>
-    <header>
+<header>
       <nav>
-        <h1>Your Portfolio</h1>
+        <h1></h1>
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#skills">Skills</a></li>
@@ -390,7 +361,7 @@
             Welcome to my portfolio! I'm Ridham, a dedicated backend developer with a strong focus on database management and web development. I have a passion for creating robust, scalable, and secure web applications. Explore my journey and the projects I've worked on.
           </p>
           <div class="buttons">
-            <a href="assets/Ridham_Kalra_Resume.pdf" onclick="downloadResume()">Download Resume</a>
+            <a href="assests/Ridham_Kalra_Resume.pdf" onclick="downloadResume()">Download Resume</a>
           </div>
         </div>
         <div class="image">
@@ -484,27 +455,25 @@
       </div>
     </div>
 
+
+
     <!-- back top button  -->
     <a href="#" class="back-top">
       <i class="fa-solid fa-arrow-up"></i>
     </a>
 
+    <script src="script.js"></script>
+
     <script>
       function downloadResume() {
+        // Triggering a download action for the resume file
         const link = document.createElement('a');
-        link.href = './assets/Ridham_Kalra_Resume.pdf';  // Updated to relative path for deployment
-        link.download = 'Ridham_Kalra_Resume.pdf'; 
+        link.href = 'file:///D:/Ridham%20Kalra/RIDHAM_KALRA/assests/Ridham_Kalra_Resume.pdf';  // Path to the resume file
+        link.download = 'Ridham_Kalra_Resume.pdf';  // File name for download
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
       }
-
-      const menuButton = document.getElementById('btn');
-      const menu = document.querySelector('header ul');
-
-      menuButton.addEventListener('click', () => {
-        menu.classList.toggle('show');
-      });
     </script>
 
   </body>
